@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- ########################################################################################## -->
 <!--
-    This stylesheet can be used to transform an ETF version 1.0.x assertion file to an ETF 
-    version 2.0.x Executable Test Suite. 
-    
+    This stylesheet can be used to transform an ETF version 1.0.x assertion file to an ETF
+    version 2.0.x Executable Test Suite.
+
     Please note that only the model structure is mapped, XQuery test expressions must be adjusted
     manually.
-    
-    Created by Jon Herrmann, (c) 2017 interactive instruments GmbH. This file is licensed 
-    under the European Union Public Licence 1.2 
+
+    Created by Jon Herrmann, (c) 2017 interactive instruments GmbH. This file is licensed
+    under the European Union Public Licence 1.2
 -->
 <!-- ########################################################################################## -->
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
@@ -17,16 +17,16 @@
     xmlns:etf="http://www.interactive-instruments.de/etf/2.0"
     exclude-result-prefixes="uuid xs"
     version="2.0">
-   
+
     <xsl:include href="uuid.xsl"/>
-    <xsl:param name="translationTemplateId" select="uuid:randomUUID()"/>
-    <xsl:param name="tagId" select="uuid:randomUUID()"/>
+    <xsl:param name="translationTemplateId" select="uuid:randomUUID(.)"/>
+    <xsl:param name="tagId" select="uuid:randomUUID(.)"/>
     
     <xsl:template match="/Assertions">
-        
+
         <xsl:for-each select="Group">
-            <xsl:variable name="etsEid" select="uuid:randomUUID()"/>
-            
+            <xsl:variable name="etsEid" select="uuid:randomUUID(.)"/>
+
             <etf:ExecutableTestSuite xmlns="http://www.interactive-instruments.de/etf/2.0"
                 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
                 id="EID{$etsEid}"
@@ -69,7 +69,7 @@
                     <testObjectType ref="EIDe1d4a306-7a78-4a3b-ae2d-cf5f0810853e"/>
                 </supportedTestObjectTypes>
                 <testModules>
-                    <xsl:variable name="testModuleEid" select="uuid:randomUUID()"/>
+                    <xsl:variable name="testModuleEid" select="uuid:randomUUID(.)"/>
                     <TestModule id="EID{$testModuleEid}">
                         <!-- If a TestModule is labeled with IGNORE, it is not shown in the Report -but the children Test Cases  -->
                         <label>IGNORE</label>
@@ -78,14 +78,14 @@
                         <parent ref="EID{$etsEid}"/>
                         <testCases>
                             <xsl:for-each select="Subgroup">
-                                <xsl:variable name="testCaseEid" select="uuid:randomUUID()"/>
+                                <xsl:variable name="testCaseEid" select="uuid:randomUUID(.)"/>
                                 <xsl:variable name="subGroupId" select="./@id"/>
                                 <TestCase id="EID{$testCaseEid}">
                                     <label><xsl:value-of select="name"/></label>
                                     <description>...</description>
                                     <parent ref="EID{$testModuleEid}"/>
                                     <testSteps>
-                                        <xsl:variable name="testStepEid" select="uuid:randomUUID()"/>
+                                        <xsl:variable name="testStepEid" select="uuid:randomUUID(.)"/>
                                         <TestStep id="EID{$testStepEid}">
                                             <label>IGNORE</label>
                                             <description>IGNORE</description>
@@ -94,7 +94,7 @@
                                             <testItemType ref="EIDf483e8e8-06b9-4900-ab36-adad0d7f22f0"/>
                                             <testAssertions>
                                                 <xsl:for-each select="../Assertion[starts-with(@id, $subGroupId)]">
-                                                    <xsl:variable name="testAssertionEid" select="uuid:randomUUID()"/>
+                                                    <xsl:variable name="testAssertionEid" select="uuid:randomUUID(.)"/>
                                                     <TestAssertion id="EID{$testAssertionEid}">
                                                         <xsl:comment><xsl:value-of select="@id"/></xsl:comment>
                                                         <label><xsl:value-of select="name"/></label>
@@ -109,13 +109,13 @@
                                         </TestStep>
                                     </testSteps>
                                 </TestCase>
-                            </xsl:for-each> 
+                            </xsl:for-each>
                         </testCases>
                     </TestModule>
                 </testModules>
             </etf:ExecutableTestSuite>
         </xsl:for-each>
     </xsl:template>
-    
-    
+
+
 </xsl:stylesheet>

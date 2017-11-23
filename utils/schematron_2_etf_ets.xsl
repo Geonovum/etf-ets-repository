@@ -3,7 +3,7 @@
 <!--
     This stylesheet can be used to transform a Schematron file to an ETF version 2.0.x
     Executable Test Suite.
-    
+
     Please note that test expressions may be adjusted manually.
 
     Created by Jon Herrmann, (c) 2017 interactive instruments GmbH. This file is licensed
@@ -40,19 +40,20 @@
     </xsl:param>
     <!-- Optional -->
     <xsl:param name="tagId"/>
-    
-    
+
+
     <xsl:function name="ii:schVars">
         <xsl:param name="node" as="node()"/>
         <!-- &#10; is the new line character -->
         <xsl:for-each select="$node/sch:let">
             <!-- Replace document() function with BaseX doc() function -->
-            <xsl:value-of select="concat('let $', @name, ' := ', replace(@value, 'document(', 'doc('), '&#10;')"/>
+            <!-- Thijs: fix regex for document( -->
+        <xsl:value-of select="concat('let $', @name, ' := ', replace(@value, '/document\(/g', 'doc('), '&#10;')"/>
         </xsl:for-each>
     </xsl:function>
 
     <xsl:template match="/sch:schema">
-        
+
         <xsl:variable name="schemaLevelVars" select="ii:schVars(.)" />
 
         <etf:ExecutableTestSuite xmlns="http://www.interactive-instruments.de/etf/2.0"
@@ -139,7 +140,7 @@
                                             <testAssertions>
                                                 <xsl:for-each select="sch:assert">
                                                     <xsl:variable name="testAssertionEid" select="uuid:randomUUID(.)"/>
-                                                    <xsl:variable name="errorTR" select="concat('TR.schtron.', 
+                                                    <xsl:variable name="errorTR" select="concat('TR.schtron.',
                                                         translate($etsLabel,' ','.'), '.err.', $testModulePos, '.', $testCasePos, '.', position())"/>
                                                     <TestAssertion id="EID{$testAssertionEid}">
                                                         <label><xsl:value-of select="if(@id) then @id else concat('Assertion ', position())"/></label>
@@ -147,7 +148,7 @@
                                                         <description><xsl:value-of select="normalize-space(text())"/></description>
                                                         <parent ref="{$testStepEid}"/>
                                                         <expectedResult>NOT_APPLICABLE</expectedResult>
-                                                        
+
                                                         <xsl:variable name="errorTokens">
                                                             <xsl:for-each select="sch:value-of">
                                                                 <xsl:value-of select="if (position() = 1) then ', ' else ''"/>
@@ -155,11 +156,11 @@
                                                                 <xsl:value-of select="if (position() != last()) then ', ' else ''"/>
                                                             </xsl:for-each>
                                                         </xsl:variable>
-                                                        
+
                                                         <expression>
                                                             <xsl:value-of select="$ruleLevelVars"/>
-                                                            
-                                                            let $filesWithErrors := $db[<xsl:value-of select="$schContext"/>[not(<xsl:value-of select="@test"/>)]]
+
+                                                            let $filesWithErrors := $db[<xsl:value-of select="$schContext"/>[not( string-length(<xsl:value-of select="@test"/>) &gt; 0)]]
                                                             return
                                                             (if ($filesWithErrors) then 'FAILED' else 'PASSED',
                                                             local:error-statistics('TR.filesWithErrors', count($filesWithErrors)),

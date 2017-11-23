@@ -352,153 +352,153 @@
 		
 		<!-- Generated -->
 		<LangTranslationTemplateCollection
-			name="TR.schtron.Schematron.constraints.for.INSPIRE.LC.err.1.1.1">
+			name="TR.schtron.Schematron.cnt.INS.LC.err.1.1.1">
 			<translationTemplates>
-				<TranslationTemplate language="en" name="TR.schtron.Schematron.constraints.for.INSPIRE.LC.err.1.1.1">XML document '{filename}': ERROR DESCRIPTION: Complete and unique InspireId must be provided - Test is made that localId and namespace are not blank fields and that number of occurence is 1. Current instance values are localId: "{localId}" - namespace: "{namespace}". The number of occurences for this InspireId is{uniqueId}</TranslationTemplate>
+				<TranslationTemplate language="en" name="TR.schtron.Schematron.cnt.INS.LC.err.1.1.1">XML document '{filename}': ERROR DESCRIPTION: Complete and unique InspireId must be provided - Test is made that localId and namespace are not blank fields and that number of occurence is 1. Current instance values are localId: "{localId}" - namespace: "{namespace}". The number of occurences for this InspireId is{uniqueId}</TranslationTemplate>
 			</translationTemplates>
 		</LangTranslationTemplateCollection>
 		<LangTranslationTemplateCollection
-			name="TR.schtron.Schematron.constraints.for.INSPIRE.LC.err.2.1.1">
+			name="TR.schtron.Schematron.cnt.INS.LC.err.2.1.1">
 			<translationTemplates>
-				<TranslationTemplate language="en" name="TR.schtron.Schematron.constraints.for.INSPIRE.LC.err.2.1.1">XML document '{filename}': ERROR DESCRIPTION: Spatial properties are limited to the set of geometric types consisting of point, curve with linear and/or circular arc interpolation, planar surface, or aggregates thereof. Spatial topology is excluded.</TranslationTemplate>
+				<TranslationTemplate language="en" name="TR.schtron.Schematron.cnt.INS.LC.err.2.1.1">XML document '{filename}': ERROR DESCRIPTION: Spatial properties are limited to the set of geometric types consisting of point, curve with linear and/or circular arc interpolation, planar surface, or aggregates thereof. Spatial topology is excluded.</TranslationTemplate>
 			</translationTemplates>
 		</LangTranslationTemplateCollection>
 		<LangTranslationTemplateCollection
-			name="TR.schtron.Schematron.constraints.for.INSPIRE.LC.err.2.1.2">
+			name="TR.schtron.Schematron.cnt.INS.LC.err.2.1.2">
 			<translationTemplates>
-				<TranslationTemplate language="en" name="TR.schtron.Schematron.constraints.for.INSPIRE.LC.err.2.1.2">XML document '{filename}': ERROR DESCRIPTION: Curves (standalone or within surfaces) must have linear interpolation (LineString)</TranslationTemplate>
+				<TranslationTemplate language="en" name="TR.schtron.Schematron.cnt.INS.LC.err.2.1.2">XML document '{filename}': ERROR DESCRIPTION: Curves (standalone or within surfaces) must have linear interpolation (LineString)</TranslationTemplate>
 			</translationTemplates>
 		</LangTranslationTemplateCollection>
 		<LangTranslationTemplateCollection
-			name="TR.schtron.Schematron.constraints.for.INSPIRE.LC.err.2.1.3">
+			name="TR.schtron.Schematron.cnt.INS.LC.err.2.1.3">
 			<translationTemplates>
-				<TranslationTemplate language="en" name="TR.schtron.Schematron.constraints.for.INSPIRE.LC.err.2.1.3">XML document '{filename}': ERROR DESCRIPTION: Planar surface types are restricted to Polygon or MultiSurface elements.</TranslationTemplate>
+				<TranslationTemplate language="en" name="TR.schtron.Schematron.cnt.INS.LC.err.2.1.3">XML document '{filename}': ERROR DESCRIPTION: Planar surface types are restricted to Polygon or MultiSurface elements.</TranslationTemplate>
 			</translationTemplates>
 		</LangTranslationTemplateCollection>
 		<LangTranslationTemplateCollection
-			name="TR.schtron.Schematron.constraints.for.INSPIRE.LC.err.2.1.4">
+			name="TR.schtron.Schematron.cnt.INS.LC.err.2.1.4">
 			<translationTemplates>
-				<TranslationTemplate language="en" name="TR.schtron.Schematron.constraints.for.INSPIRE.LC.err.2.1.4">XML document '{filename}': ERROR DESCRIPTION: Supported geometry types are restricted to point, curve with linear and/or circular arc interpolation, planar surface, or aggregates thereof.</TranslationTemplate>
+				<TranslationTemplate language="en" name="TR.schtron.Schematron.cnt.INS.LC.err.2.1.4">XML document '{filename}': ERROR DESCRIPTION: Supported geometry types are restricted to point, curve with linear and/or circular arc interpolation, planar surface, or aggregates thereof.</TranslationTemplate>
 			</translationTemplates>
 		</LangTranslationTemplateCollection>
 		<LangTranslationTemplateCollection
-			name="TR.schtron.Schematron.constraints.for.INSPIRE.LC.err.2.1.5">
+			name="TR.schtron.Schematron.cnt.INS.LC.err.2.1.5">
 			<translationTemplates>
-				<TranslationTemplate language="en" name="TR.schtron.Schematron.constraints.for.INSPIRE.LC.err.2.1.5">XML document '{filename}': ERROR DESCRIPTION: Geometry coordinates shall only be specified using the gml:pos element for gml:Point.</TranslationTemplate>
+				<TranslationTemplate language="en" name="TR.schtron.Schematron.cnt.INS.LC.err.2.1.5">XML document '{filename}': ERROR DESCRIPTION: Geometry coordinates shall only be specified using the gml:pos element for gml:Point.</TranslationTemplate>
 			</translationTemplates>
 		</LangTranslationTemplateCollection>
 		<LangTranslationTemplateCollection
-			name="TR.schtron.Schematron.constraints.for.INSPIRE.LC.err.2.1.6">
+			name="TR.schtron.Schematron.cnt.INS.LC.err.2.1.6">
 			<translationTemplates>
-				<TranslationTemplate language="en" name="TR.schtron.Schematron.constraints.for.INSPIRE.LC.err.2.1.6">XML document '{filename}': ERROR DESCRIPTION: Geometry coordinates shall only be specified using the gml:pos element for gml:CircleByCenterPoint.</TranslationTemplate>
+				<TranslationTemplate language="en" name="TR.schtron.Schematron.cnt.INS.LC.err.2.1.6">XML document '{filename}': ERROR DESCRIPTION: Geometry coordinates shall only be specified using the gml:pos element for gml:CircleByCenterPoint.</TranslationTemplate>
 			</translationTemplates>
 		</LangTranslationTemplateCollection>
 		<LangTranslationTemplateCollection
-			name="TR.schtron.Schematron.constraints.for.INSPIRE.LC.err.2.1.7">
+			name="TR.schtron.Schematron.cnt.INS.LC.err.2.1.7">
 			<translationTemplates>
-				<TranslationTemplate language="en" name="TR.schtron.Schematron.constraints.for.INSPIRE.LC.err.2.1.7">XML document '{filename}': ERROR DESCRIPTION: Geometry coordinates shall only be specified using the gml:posList element for gml:LineStringSegment.</TranslationTemplate>
+				<TranslationTemplate language="en" name="TR.schtron.Schematron.cnt.INS.LC.err.2.1.7">XML document '{filename}': ERROR DESCRIPTION: Geometry coordinates shall only be specified using the gml:posList element for gml:LineStringSegment.</TranslationTemplate>
 			</translationTemplates>
 		</LangTranslationTemplateCollection>
 		<LangTranslationTemplateCollection
-			name="TR.schtron.Schematron.constraints.for.INSPIRE.LC.err.2.1.8">
+			name="TR.schtron.Schematron.cnt.INS.LC.err.2.1.8">
 			<translationTemplates>
-				<TranslationTemplate language="en" name="TR.schtron.Schematron.constraints.for.INSPIRE.LC.err.2.1.8">XML document '{filename}': ERROR DESCRIPTION: Geometry coordinates shall only be specified using the gml:posList element for gml:LinearRing.</TranslationTemplate>
+				<TranslationTemplate language="en" name="TR.schtron.Schematron.cnt.INS.LC.err.2.1.8">XML document '{filename}': ERROR DESCRIPTION: Geometry coordinates shall only be specified using the gml:posList element for gml:LinearRing.</TranslationTemplate>
 			</translationTemplates>
 		</LangTranslationTemplateCollection>
 		<LangTranslationTemplateCollection
-			name="TR.schtron.Schematron.constraints.for.INSPIRE.LC.err.2.1.9">
+			name="TR.schtron.Schematron.cnt.INS.LC.err.2.1.9">
 			<translationTemplates>
-				<TranslationTemplate language="en" name="TR.schtron.Schematron.constraints.for.INSPIRE.LC.err.2.1.9">XML document '{filename}': ERROR DESCRIPTION: Geometry coordinates shall only be specified using the gml:posList element for gml:Arc.</TranslationTemplate>
+				<TranslationTemplate language="en" name="TR.schtron.Schematron.cnt.INS.LC.err.2.1.9">XML document '{filename}': ERROR DESCRIPTION: Geometry coordinates shall only be specified using the gml:posList element for gml:Arc.</TranslationTemplate>
 			</translationTemplates>
 		</LangTranslationTemplateCollection>
 		<LangTranslationTemplateCollection
-			name="TR.schtron.Schematron.constraints.for.INSPIRE.LC.err.2.1.10">
+			name="TR.schtron.Schematron.cnt.INS.LC.err.2.1.10">
 			<translationTemplates>
-				<TranslationTemplate language="en" name="TR.schtron.Schematron.constraints.for.INSPIRE.LC.err.2.1.10">XML document '{filename}': ERROR DESCRIPTION: Geometry coordinates shall only be specified using the gml:posList element for gml:Circle.</TranslationTemplate>
+				<TranslationTemplate language="en" name="TR.schtron.Schematron.cnt.INS.LC.err.2.1.10">XML document '{filename}': ERROR DESCRIPTION: Geometry coordinates shall only be specified using the gml:posList element for gml:Circle.</TranslationTemplate>
 			</translationTemplates>
 		</LangTranslationTemplateCollection>
 		<LangTranslationTemplateCollection
-			name="TR.schtron.Schematron.constraints.for.INSPIRE.LC.err.2.1.11">
+			name="TR.schtron.Schematron.cnt.INS.LC.err.2.1.11">
 			<translationTemplates>
-				<TranslationTemplate language="en" name="TR.schtron.Schematron.constraints.for.INSPIRE.LC.err.2.1.11">XML document '{filename}': ERROR DESCRIPTION: This profile restricts instance documents to using the property container gml:pointMember for the MultiPoint geometry type.</TranslationTemplate>
+				<TranslationTemplate language="en" name="TR.schtron.Schematron.cnt.INS.LC.err.2.1.11">XML document '{filename}': ERROR DESCRIPTION: This profile restricts instance documents to using the property container gml:pointMember for the MultiPoint geometry type.</TranslationTemplate>
 			</translationTemplates>
 		</LangTranslationTemplateCollection>
 		<LangTranslationTemplateCollection
-			name="TR.schtron.Schematron.constraints.for.INSPIRE.LC.err.2.1.12">
+			name="TR.schtron.Schematron.cnt.INS.LC.err.2.1.12">
 			<translationTemplates>
-				<TranslationTemplate language="en" name="TR.schtron.Schematron.constraints.for.INSPIRE.LC.err.2.1.12">XML document '{filename}': ERROR DESCRIPTION: This profile restricts instance documents to using the property container gml:curveMember for the MultiCurve geometry type.</TranslationTemplate>
+				<TranslationTemplate language="en" name="TR.schtron.Schematron.cnt.INS.LC.err.2.1.12">XML document '{filename}': ERROR DESCRIPTION: This profile restricts instance documents to using the property container gml:curveMember for the MultiCurve geometry type.</TranslationTemplate>
 			</translationTemplates>
 		</LangTranslationTemplateCollection>
 		<LangTranslationTemplateCollection
-			name="TR.schtron.Schematron.constraints.for.INSPIRE.LC.err.2.1.13">
+			name="TR.schtron.Schematron.cnt.INS.LC.err.2.1.13">
 			<translationTemplates>
-				<TranslationTemplate language="en" name="TR.schtron.Schematron.constraints.for.INSPIRE.LC.err.2.1.13">XML document '{filename}': ERROR DESCRIPTION: This profile restricts instance documents to using the property container gml:surfaceMember for the MultiSurface geometry type.</TranslationTemplate>
+				<TranslationTemplate language="en" name="TR.schtron.Schematron.cnt.INS.LC.err.2.1.13">XML document '{filename}': ERROR DESCRIPTION: This profile restricts instance documents to using the property container gml:surfaceMember for the MultiSurface geometry type.</TranslationTemplate>
 			</translationTemplates>
 		</LangTranslationTemplateCollection>
 		<LangTranslationTemplateCollection
-			name="TR.schtron.Schematron.constraints.for.INSPIRE.LC.err.2.1.14">
+			name="TR.schtron.Schematron.cnt.INS.LC.err.2.1.14">
 			<translationTemplates>
-				<TranslationTemplate language="en" name="TR.schtron.Schematron.constraints.for.INSPIRE.LC.err.2.1.14">XML document '{filename}': ERROR DESCRIPTION: This profile restricts instance documents to using the property container gml:geometryMember for the MultiGeometry geometry type.</TranslationTemplate>
+				<TranslationTemplate language="en" name="TR.schtron.Schematron.cnt.INS.LC.err.2.1.14">XML document '{filename}': ERROR DESCRIPTION: This profile restricts instance documents to using the property container gml:geometryMember for the MultiGeometry geometry type.</TranslationTemplate>
 			</translationTemplates>
 		</LangTranslationTemplateCollection>
 		<LangTranslationTemplateCollection
-			name="TR.schtron.Schematron.constraints.for.INSPIRE.LC.err.2.1.15">
+			name="TR.schtron.Schematron.cnt.INS.LC.err.2.1.15">
 			<translationTemplates>
-				<TranslationTemplate language="en" name="TR.schtron.Schematron.constraints.for.INSPIRE.LC.err.2.1.15">XML document '{filename}': ERROR DESCRIPTION: The content of gml:Surface elements is restricted to gml:PolygonPatch patches.</TranslationTemplate>
+				<TranslationTemplate language="en" name="TR.schtron.Schematron.cnt.INS.LC.err.2.1.15">XML document '{filename}': ERROR DESCRIPTION: The content of gml:Surface elements is restricted to gml:PolygonPatch patches.</TranslationTemplate>
 			</translationTemplates>
 		</LangTranslationTemplateCollection>
 		<LangTranslationTemplateCollection
-			name="TR.schtron.Schematron.constraints.for.INSPIRE.LC.err.2.1.16">
+			name="TR.schtron.Schematron.cnt.INS.LC.err.2.1.16">
 			<translationTemplates>
-				<TranslationTemplate language="en" name="TR.schtron.Schematron.constraints.for.INSPIRE.LC.err.2.1.16">XML document '{filename}': ERROR DESCRIPTION: Coordinate reference systems may have 1, 2 or 3 dimensions.</TranslationTemplate>
+				<TranslationTemplate language="en" name="TR.schtron.Schematron.cnt.INS.LC.err.2.1.16">XML document '{filename}': ERROR DESCRIPTION: Coordinate reference systems may have 1, 2 or 3 dimensions.</TranslationTemplate>
 			</translationTemplates>
 		</LangTranslationTemplateCollection>
 		<LangTranslationTemplateCollection
-			name="TR.schtron.Schematron.constraints.for.INSPIRE.LC.err.3.1.1">
+			name="TR.schtron.Schematron.cnt.INS.LC.err.3.1.1">
 			<translationTemplates>
-				<TranslationTemplate language="en" name="TR.schtron.Schematron.constraints.for.INSPIRE.LC.err.3.1.1">XML document '{filename}': ERROR DESCRIPTION: Each LandCoverUnit is defined by a geometry which is restricted to Points or Surfaces!</TranslationTemplate>
+				<TranslationTemplate language="en" name="TR.schtron.Schematron.cnt.INS.LC.err.3.1.1">XML document '{filename}': ERROR DESCRIPTION: Each LandCoverUnit is defined by a geometry which is restricted to Points or Surfaces!</TranslationTemplate>
 			</translationTemplates>
 		</LangTranslationTemplateCollection>
 		<LangTranslationTemplateCollection
-			name="TR.schtron.Schematron.constraints.for.INSPIRE.LC.err.4.1.1">
+			name="TR.schtron.Schematron.cnt.INS.LC.err.4.1.1">
 			<translationTemplates>
-				<TranslationTemplate language="en" name="TR.schtron.Schematron.constraints.for.INSPIRE.LC.err.4.1.1">XML document '{filename}': ERROR DESCRIPTION: The sum of all coveredPercentage attributes attached to each LandCoverObservation shall be lower or equal to 100 !</TranslationTemplate>
+				<TranslationTemplate language="en" name="TR.schtron.Schematron.cnt.INS.LC.err.4.1.1">XML document '{filename}': ERROR DESCRIPTION: The sum of all coveredPercentage attributes attached to each LandCoverObservation shall be lower or equal to 100 !</TranslationTemplate>
 			</translationTemplates>
 		</LangTranslationTemplateCollection>
 		<LangTranslationTemplateCollection
-			name="TR.schtron.Schematron.constraints.for.INSPIRE.LC.err.5.1.1">
+			name="TR.schtron.Schematron.cnt.INS.LC.err.5.1.1">
 			<translationTemplates>
-				<TranslationTemplate language="en" name="TR.schtron.Schematron.constraints.for.INSPIRE.LC.err.5.1.1">XML document '{filename}': ERROR DESCRIPTION: at least one of external or embedded description must be specified !</TranslationTemplate>
+				<TranslationTemplate language="en" name="TR.schtron.Schematron.cnt.INS.LC.err.5.1.1">XML document '{filename}': ERROR DESCRIPTION: at least one of external or embedded description must be specified !</TranslationTemplate>
 			</translationTemplates>
 		</LangTranslationTemplateCollection>
 		<LangTranslationTemplateCollection
-			name="TR.schtron.Schematron.constraints.for.INSPIRE.LC.err.6.1.1">
+			name="TR.schtron.Schematron.cnt.INS.LC.err.6.1.1">
 			<translationTemplates>
-				<TranslationTemplate language="en" name="TR.schtron.Schematron.constraints.for.INSPIRE.LC.err.6.1.1">XML document '{filename}': ERROR DESCRIPTION: Coordinate reference system missing !!!</TranslationTemplate>
+				<TranslationTemplate language="en" name="TR.schtron.Schematron.cnt.INS.LC.err.6.1.1">XML document '{filename}': ERROR DESCRIPTION: Coordinate reference system missing !!!</TranslationTemplate>
 			</translationTemplates>
 		</LangTranslationTemplateCollection>
 		<LangTranslationTemplateCollection
-			name="TR.schtron.Schematron.constraints.for.INSPIRE.LC.err.6.2.1">
+			name="TR.schtron.Schematron.cnt.INS.LC.err.6.2.1">
 			<translationTemplates>
-				<TranslationTemplate language="en" name="TR.schtron.Schematron.constraints.for.INSPIRE.LC.err.6.2.1">XML document '{filename}': ERROR DESCRIPTION: Coordinate reference system missing !!!</TranslationTemplate>
+				<TranslationTemplate language="en" name="TR.schtron.Schematron.cnt.INS.LC.err.6.2.1">XML document '{filename}': ERROR DESCRIPTION: Coordinate reference system missing !!!</TranslationTemplate>
 			</translationTemplates>
 		</LangTranslationTemplateCollection>
 		<LangTranslationTemplateCollection
-			name="TR.schtron.Schematron.constraints.for.INSPIRE.LC.err.7.1.1">
+			name="TR.schtron.Schematron.cnt.INS.LC.err.7.1.1">
 			<translationTemplates>
-				<TranslationTemplate language="en" name="TR.schtron.Schematron.constraints.for.INSPIRE.LC.err.7.1.1">XML document '{filename}': ERROR DESCRIPTION: The Coordinate reference system value "{srs_name}" defined for the dataset is not allowed!refer to EPSG codes listed in Table 8 of Land Cover Data Specification for allowed values</TranslationTemplate>
+				<TranslationTemplate language="en" name="TR.schtron.Schematron.cnt.INS.LC.err.7.1.1">XML document '{filename}': ERROR DESCRIPTION: The Coordinate reference system value "{srs_name}" defined for the dataset is not allowed!refer to EPSG codes listed in Table 8 of Land Cover Data Specification for allowed values</TranslationTemplate>
 			</translationTemplates>
 		</LangTranslationTemplateCollection>
 		<LangTranslationTemplateCollection
-			name="TR.schtron.Schematron.constraints.for.INSPIRE.LC.err.8.1.1">
+			name="TR.schtron.Schematron.cnt.INS.LC.err.8.1.1">
 			<translationTemplates>
-				<TranslationTemplate language="en" name="TR.schtron.Schematron.constraints.for.INSPIRE.LC.err.8.1.1">XML document '{filename}': test A.3.3 - begin time must be before end time : beginTime value is [{beginTime}] endTime value is [{endTime}]</TranslationTemplate>
+				<TranslationTemplate language="en" name="TR.schtron.Schematron.cnt.INS.LC.err.8.1.1">XML document '{filename}': test A.3.3 - begin time must be before end time : beginTime value is [{beginTime}] endTime value is [{endTime}]</TranslationTemplate>
 			</translationTemplates>
 		</LangTranslationTemplateCollection>
 		<LangTranslationTemplateCollection
-			name="TR.schtron.Schematron.constraints.for.INSPIRE.LC.err.9.1.1">
+			name="TR.schtron.Schematron.cnt.INS.LC.err.9.1.1">
 			<translationTemplates>
-				<TranslationTemplate language="en" name="TR.schtron.Schematron.constraints.for.INSPIRE.LC.err.9.1.1">XML document '{filename}': test A.3.4 - validFrom date must be before validTo date : validFrom value is [{From}] validTo value is [{To}]</TranslationTemplate>
+				<TranslationTemplate language="en" name="TR.schtron.Schematron.cnt.INS.LC.err.9.1.1">XML document '{filename}': test A.3.4 - validFrom date must be before validTo date : validFrom value is [{From}] validTo value is [{To}]</TranslationTemplate>
 			</translationTemplates>
 		</LangTranslationTemplateCollection>
 	</translationTemplateCollections>
