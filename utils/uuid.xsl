@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<xsl:stylesheet 
-    xmlns:uuid="http://www.uuid.org" 
-    xmlns:math="http://exslt.org/math" 
-    xmlns:xs="http://www.w3.org/2001/XMLSchema" 
+<xsl:stylesheet
+    xmlns:uuid="http://www.uuid.org"
+    xmlns:math="http://exslt.org/math"
+    xmlns:xs="http://www.w3.org/2001/XMLSchema"
     xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
     xmlns:saxon="http://saxon.sf.net/"
     version="2.0">
-    
+
     <!--
-        Based on 
+        Based on
         https://github.com/opendatacz/TED_extractor/blob/master/xslt/uuid.xsl
     -->
-    
-    
+
+
     <!--
 Functions in the uuid: namespace are used to calculate a UUID
 The method used is a derived timestamp method, which is explained
@@ -20,7 +20,7 @@ here: http://www.famkruithof.net/guid-uuid-timebased.html
 and here: http://www.ietf.org/rfc/rfc4122.txt
 -->
     <!-- Returns the UUID -->
-    <xsl:function name="uuid:randomUUID" as="xs:string*" cache="no" saxon:memo-function="no">
+    <xsl:function name="uuid:randomUUID" as="xs:string*" saxon:memo-function="no">
         <xsl:param name="node"/>
         <xsl:variable name="ts" select="uuid:ts-to-hex(uuid:generate-timestamp($node))"/>
         <xsl:value-of separator="-" select="
@@ -30,31 +30,31 @@ and here: http://www.ietf.org/rfc/rfc4122.txt
             uuid:_hex-only(concat(generate-id($node), uuid:generate-clock-id()), 4),
             uuid:get-network-node()"/>
     </xsl:function>
-    
+
     <!-- internal aux. fu with saxon, this creates a more-unique result with
     generate-id then when just using a variable containing a node
     -->
-    <xsl:function name="uuid:_get-node" cache="no">
+    <xsl:function name="uuid:_get-node" >
         <xsl:comment/>
     </xsl:function>
-    
+
     <!-- generates some kind of unique id -->
-    <xsl:function name="uuid:get-id" as="xs:string" cache="no">
+    <xsl:function name="uuid:get-id" as="xs:string" >
         <xsl:sequence select="generate-id(uuid:_get-node())"/>
     </xsl:function>
-    
+
     <!-- should return the next nr in sequence, but this can't be done
     in xslt. Instead, it returns a guaranteed unique number
     -->
-    <xsl:function name="uuid:next-nr" as="xs:integer" cache="no">
+    <xsl:function name="uuid:next-nr" as="xs:integer" >
         <xsl:param name="node"/>
         <xsl:sequence select="
             xs:integer(replace(
             generate-id($node), '\D', ''))"/>
     </xsl:function>
-    
+
     <!-- internal fu for returning hex digits only -->
-    <xsl:function name="uuid:_hex-only" as="xs:string" cache="no">
+    <xsl:function name="uuid:_hex-only" as="xs:string" >
         <xsl:param name="string"/>
         <xsl:param name="count"/>
         <xsl:sequence select="
@@ -62,13 +62,13 @@ and here: http://www.ietf.org/rfc/rfc4122.txt
             $string, '[^0-9a-fA-F]', '')
             , 1, $count)"/>
     </xsl:function>
-    
+
     <!-- may as well be defined as returning the same seq each time -->
     <!--xsl:variable name="_clock" select="uuid:get-id()"/-->
     <xsl:function name="uuid:generate-clock-id" as="xs:string">
         <xsl:sequence select="uuid:_hex-only(uuid:get-id(), 4)"/>
     </xsl:function>
-    
+
     <!-- returns the network node, this one is 'random', but must
     be the same within calls. The least-significant bit must be '1'
     when it is not a real MAC address (in this case it is set to '1')
@@ -76,16 +76,16 @@ and here: http://www.ietf.org/rfc/rfc4122.txt
     <xsl:function name="uuid:get-network-node" as="xs:string">
         <xsl:sequence select="uuid:_hex-only('09-17-3f-13-e4-c5', 12)"/>
     </xsl:function>
-    
+
     <!-- returns version, for timestamp uuids, this is "1" -->
     <xsl:function name="uuid:get-uuid-version" as="xs:string">
         <xsl:sequence select="'1'"/>
     </xsl:function>
-    
+
     <!-- Generates a timestamp of the amount of 100 nanosecond
     intervals from 15 October 1582, in UTC time.
     -->
-    <xsl:function name="uuid:generate-timestamp" cache="no" saxon:memo-function="no">
+    <xsl:function name="uuid:generate-timestamp" saxon:memo-function="no">
         <xsl:param name="node"/>
         <!-- date calculation automatically goes
         correct when you add the timezone information, in this
@@ -107,7 +107,7 @@ and here: http://www.ietf.org/rfc/rfc4122.txt
             seconds-from-duration($duration-from-1582)) * 1000
             * 10000 + $random-offset"/>
     </xsl:function>
-    
+
     <!-- simple non-generalized function to convert from timestamp to hex -->
     <xsl:function name="uuid:ts-to-hex">
         <xsl:param name="dec-val"/>
@@ -120,18 +120,18 @@ and here: http://www.ietf.org/rfc/rfc4122.txt
             mod 16 + 1
             ]"/>
     </xsl:function>
-    
+
     <xsl:function name="math:power">
         <xsl:param name="base"/>
         <xsl:param name="power"/>
         <xsl:choose>
             <xsl:when test="$power &lt; 0 or contains(string($power), '.')">
                 <xsl:message terminate="yes">
-                    
+
                     The XSLT template math:power doesn't support negative or
-                    
+
                     fractional arguments.
-                    
+
                 </xsl:message>
                 <xsl:text>NaN</xsl:text>
             </xsl:when>
@@ -144,7 +144,7 @@ and here: http://www.ietf.org/rfc/rfc4122.txt
             </xsl:otherwise>
         </xsl:choose>
     </xsl:function>
-    
+
     <xsl:template name="math:_power">
         <xsl:param name="base"/>
         <xsl:param name="power"/>
