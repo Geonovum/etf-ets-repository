@@ -19,6 +19,14 @@
         <xsl:message terminate="yes">Set the Translation Template Bundle EID from the generated ETS file (look for the 'ref' attribute in the 'etf:translationTemplateBundle' element)</xsl:message>
         <xsl:value-of select="uuid:randomUUID(uuid:_get-node())"/>
     </xsl:param>
+    <xsl:param name="dependencyIdXsd">
+        <xsl:message terminate="yes">ExecutableTestSuite EIDs of the tests to use for XSD validation. Without the EID prefix.</xsl:message>
+        <xsl:value-of select="''"/>
+    </xsl:param>
+    <xsl:param name="dependencyIdSchematron">
+        <xsl:message terminate="yes">ExecutableTestSuite EIDs of the tests to use for Schematron validation. Without the EID prefix.</xsl:message>
+        <xsl:value-of select="''"/>
+    </xsl:param>
     <xsl:param name="etsId">
         <xsl:message terminate="no">ExecutableTestSuite is generated. Defaults to a new random UUID.</xsl:message>
         <xsl:value-of select="uuid:randomUUID(uuid:_get-node())"/>
@@ -33,6 +41,7 @@
     </xsl:param>
 <xsl:template match="/etf:Tag">
 <xsl:variable name="tagId" select="@id"/>
+
 <etf:ExecutableTestSuite xmlns="http://www.interactive-instruments.de/etf/2.0"
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xmlns:etf="http://www.interactive-instruments.de/etf/2.0"
@@ -41,14 +50,15 @@
     <itemHash>bQ==</itemHash>
     <remoteResource>https://github.com/interactive-instruments/etf-ets-repository</remoteResource>
     <localPath>/auto</localPath>
-    <label>Schema tests</label>
-    <description>...</description>
+    <!-- TODO: get the label from the Tag file -->
+    <label>Run all dependencies</label>
+    <description>Run XSD and Schematron tests for <xsl:value-of select="./etf:label"/></description>
     <reference>../example-bsxets.xq</reference>
     <version>2.0.0</version>
-    <author>interactive instruments GmbH</author>
-    <creationDate>2015-08-18T12:00:00.000+02:00</creationDate>
-    <lastEditor>Transformer for XSD tests BSX</lastEditor>
-    <lastUpdateDate><xsl:value-of select="current-dateTime()"/></lastUpdateDate>
+    <author>Geonovum</author>
+    <creationDate>2018-01-19T16:06:53.937+02:00</creationDate>
+    <lastEditor>Geonovum</lastEditor>
+    <lastUpdateDate>2018-01-19T16:06:53.937+02:00</lastUpdateDate>
     <tags>
         <tag ref="{$tagId}"/>
     </tags>
@@ -69,16 +79,20 @@
         </parameter>
     </ParameterList>
   <supportedTestObjectTypes><testObjectType ref="EID{$testObjectTypeId}"/></supportedTestObjectTypes>
+    <dependencies>
+            <executableTestSuite ref="EID{$dependencyIdXsd}"/>
+            <executableTestSuite ref="EID{$dependencyIdSchematron}"/>
+    </dependencies>
     <testModules>
         <xsl:variable name="testModuleEid" select="concat('EID', uuid:randomUUID(uuid:_get-node()))"/>
         <TestModule id="{$testModuleEid}">
-            <label>xsd validation</label>
-            <description>xsd validation</description>
+            <label>IGNORE</label>
+            <description>IGNORE</description>
             <parent ref="EID{$etsId}"/>
             <testCases>
                 <xsl:variable name="testCaseEid" select="concat('EID', uuid:randomUUID(uuid:_get-node()))"/>
                 <TestCase id="{$testCaseEid}">
-                    <label>Schema validation</label>
+                    <label>Tests</label>
                     <description>...</description>
                     <parent ref="{$testModuleEid}"/>
                     <testSteps>
@@ -86,48 +100,18 @@
                         <TestStep id="{$testStepEid}">
                             <label>IGNORE</label>
                             <description>IGNORE</description>
-                            <parent ref="{$testModuleEid}"/>
+                            <parent ref="{$testCaseEid}"/>
                             <statementForExecution>not applicable</statementForExecution>
                             <testItemType ref="EIDf483e8e8-06b9-4900-ab36-adad0d7f22f0"/>
                             <testAssertions>
                                 <xsl:variable name="testAssertionEid" select="concat('EID', uuid:randomUUID(uuid:_get-node()))"/>
                                 <TestAssertion id="{$testAssertionEid}">
-                                    <!--Schema.valid.XSD-->
-                                    <label>XML Schema validation</label>
-                                    <description/>
+                                    <label>Skipped</label>
+                                    <description>...</description>
                                     <parent ref="{$testStepEid}"/>
                                     <expectedResult>NOT_APPLICABLE</expectedResult>
-                                    <!-- Test Driver validates against xsi:schemaLocation and passes the errors as $validationErrors -->
-                                    <!--expression>if (not($validationErrors)) then 'PASSED' else ('FAILED', for $error in $validationErrors return (local:addMessage('TR.validationError', map { 'text': $error })))</expression-->
-                                    <!-- Use a static schema file, dummyschema.xsd (see  http://docs.basex.org/wiki/Validation_Module#validate:xsd-info ) -->
-                                    <expression>
-                                        let $allErrors := (
-                                            for $file in $db
-                                            return
-                                                let $start := prof:current-ms()
-                                                let $infos := validate:xsd-info($file, '<xsl:value-of select="$schemaURL"/>' )
-                                                let $duration := prof:current-ms()-$start
-                                                let $logentry := local:log('Validating file ' || local:filename($file) || ': ' || $duration || ' ms')
-                                                let $errors := count($infos)
-                                                return
-                                                if ($errors &gt; 0) then
-                                                    (local:addMessage('TR.invalidSchema', map { 'filename': local:filename($file), 'count': string($errors) }),
-                                                    for $info in $infos return local:addMessage('TR.xmlSchemaError', map { 'filename': local:filename($file), 'error': $info }))
-                                                else ()
-                                        )
-                                        return
-                                        (if ($allErrors) then 'FAILED' else 'PASSED',
-                                        local:error-statistics('TR.filesWithErrors', count($allErrors[@ref eq 'TR.invalidSchema'])),
-                                        $allErrors[position() le $limitErrors])
-                                    </expression>
+                                    <expression>'PASSED'</expression>
                                     <testItemType ref="EIDf0edc596-49d2-48d6-a1a1-1ac581dcde0a"/>
-                                    <translationTemplates>
-                                        <translationTemplate ref="TR.xmlSchemaError"/>
-                                        <translationTemplate ref="TR.invalidSchema"/>
-                                        <translationTemplate ref="TR.filesWithErrors"/>
-                                        <translationTemplate ref="TR.xmlSchemaErrorRecord"/>
-                                        <translationTemplate ref="TR.invalidSchemaRecord"/>
-                                    </translationTemplates>
                                 </TestAssertion>
                             </testAssertions>
                         </TestStep>

@@ -3,7 +3,7 @@
 <!--
     This stylesheet can be used to transform a Schematron file to an ETF version 2.0.x
     Translation Template Bundle.
-    
+
     Please note that manual modifications may be required.
 
     Created by Jon Herrmann, (c) 2017 interactive instruments GmbH. This file is licensed
@@ -18,12 +18,13 @@
     xmlns:sch="http://purl.oclc.org/dsdl/schematron"
     exclude-result-prefixes="uuid xs sch"
     version="2.0">
+    <xsl:output method="xml" version="1.0" encoding="UTF-8" indent="yes"/>
     <xsl:param name="translationTemplateId">
         <xsl:message terminate="yes">Set the Translation Template Bundle EID from the generated ETS file (look for the 'ref' attribute in the 'etf:translationTemplateBundle' element)</xsl:message>
         <xsl:value-of select="''"/>
     </xsl:param>
     <xsl:template match="/sch:schema">
-        <TranslationTemplateBundle xmlns="http://www.interactive-instruments.de/etf/2.0" 
+        <TranslationTemplateBundle xmlns="http://www.interactive-instruments.de/etf/2.0"
             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
             id="EID{replace($translationTemplateId, 'EID', '')}"
             xsi:schemaLocation="http://www.interactive-instruments.de/etf/2.0 http://resources.etf-validator.net/schema/v2/service/service.xsd">
@@ -40,13 +41,13 @@
             <xsl:comment>Translation Template Bundle EID27117afb-11aa-4e45-aa3d-0e1e65bdccb8 can be downloaded from:</xsl:comment>
             <xsl:comment>https://raw.githubusercontent.com/interactive-instruments/etf-ets-repository/master/generic/include-metadata/TranslationTemplateBundle-EID27117afb-11aa-4e45-aa3d-0e1e65bdccb8.xml</xsl:comment>
             <etf:parent ref="EID27117afb-11aa-4e45-aa3d-0e1e65bdccb8" />
-            <translationTemplateCollections>   
+            <translationTemplateCollections>
             <xsl:for-each select="sch:pattern[not(@abstract = 'true')]">
                 <xsl:variable name="testModulePos" select="position()"/>
                 <xsl:for-each select="sch:rule[not(@abstract = 'true')]">
                     <xsl:variable name="testCasePos" select="position()"/>
                     <xsl:for-each select="sch:assert">
-                        <xsl:variable name="errorTR" select="concat('TR.schtron.', 
+                        <xsl:variable name="errorTR" select="concat('TR.schtron.',
                             translate($etsLabel,' ','.'), '.err.', $testModulePos, '.', $testCasePos, '.', position())"/>
                         <xsl:variable name="errorTextWithTokens">
                             <xsl:for-each select="node()">
@@ -65,7 +66,7 @@
                             <translationTemplates>
                                 <TranslationTemplate language="{$lang}" name="{$errorTR}">XML document '{filename}': <xsl:value-of select="string-join($errorTextWithTokens, '')"/></TranslationTemplate>
                             </translationTemplates>
-                        </LangTranslationTemplateCollection>      
+                        </LangTranslationTemplateCollection>
                       </xsl:for-each>
                 </xsl:for-each>
             </xsl:for-each>

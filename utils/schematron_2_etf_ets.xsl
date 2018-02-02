@@ -3,7 +3,7 @@
 <!--
     This stylesheet can be used to transform a Schematron file to an ETF version 2.0.x
     Executable Test Suite.
-    
+
     Please note that test expressions may be adjusted manually.
 
     Created by Jon Herrmann, (c) 2017 interactive instruments GmbH. This file is licensed
@@ -18,7 +18,7 @@
     xmlns:sch="http://purl.oclc.org/dsdl/schematron"
     exclude-result-prefixes="uuid xs sch"
     version="2.0">
-
+    <xsl:output method="xml" version="1.0" encoding="UTF-8" indent="yes"/>
     <xsl:include href="uuid.xsl"/>
     <!-- ####################################  Parameters  ######################################## -->
     <!-- Optional etsId -->
@@ -44,14 +44,14 @@
     <xsl:param name="tagId"/>
     <!-- Optional author -->
     <xsl:param name="schAuthor">See original schematron <xsl:value-of select="base-uri()"/></xsl:param>
-        
-    <!-- Optional Test Object Type. Default: GML feature collections, 
+
+    <!-- Optional Test Object Type. Default: GML feature collections,
         see http://docs.etf-validator.net/Developer_manuals/Developing_Executable_Test_Suites.html#basex-test-object-types
         for other types
     -->
     <xsl:param name="testObjectTypeId">EIDe1d4a306-7a78-4a3b-ae2d-cf5f0810853e</xsl:param>
     <!-- ########################################################################################## -->
-    
+
     <xsl:function name="ii:translateFcts">
         <xsl:param name="exp" as="xs:string"/>
         <!-- Replace document() function with BaseX doc() http://docs.basex.org/wiki/Databases#XML_Documents function -->
@@ -60,7 +60,7 @@
         <xsl:variable name="fctTrans2" select="replace($fctTrans1, 'current\(\)', '.')"/>
         <!-- Replace not() with notOrEmpty() as our sequence would throw an FORG0006 error (in schematron just one node is selected in the context) -->
         <xsl:variable name="fctTrans3" select="replace($fctTrans2, 'not\(', 'local:not-seq(')"/>
-        
+
         <xsl:variable name="fctTrans4" select="replace($fctTrans3, 'concat\(', 'local:concat-seq(')"/>
         <xsl:variable name="fctTrans5" select="replace($fctTrans4, 'substring\(', 'local:substring-seq(')"/>
         <xsl:variable name="fctTrans6" select="replace($fctTrans5, 'substring-before\(', 'local:substring-before-seq(')"/>
@@ -69,29 +69,29 @@
         <xsl:variable name="fctTrans9" select="replace($fctTrans8, 'number\(', 'local:number-seq(')"/>
         <xsl:variable name="fctTrans10" select="replace($fctTrans9, 'normalize-space\(', 'local:normalize-space-seq(')"/>
         <xsl:variable name="fctTrans11" select="replace($fctTrans10, 'contains\(', 'local:contains-seq(')"/>
-       
+
         <xsl:variable name="fctTrans" select="$fctTrans11"/>
         <xsl:if test="contains($fctTrans, 'doc(') and not(contains($fctTrans, 'doc(''http') or contains($fctTrans, 'doc(''file'))">
-            <xsl:message terminate="no">Warning: a resource path must be corrected manually. If you are referencing a local file, set an absoulte path starting with file:/// . 
+            <xsl:message terminate="no">Warning: a resource path must be corrected manually. If you are referencing a local file, set an absoulte path starting with file:/// .
                 See also http://www.xqueryfunctions.com/xq/fn_doc.html . Expression: <xsl:value-of select="$fctTrans"/>
             </xsl:message>
         </xsl:if>
         <xsl:value-of select="$fctTrans"/>
     </xsl:function>
-    
+
     <xsl:function name="ii:schVars">
         <xsl:param name="node" as="node()"/>
         <xsl:param name="extContext" as="xs:boolean"/>
         <xsl:param name="rootContext" as="xs:string"/>
-        
+
         <xsl:variable name="ctx" select="$node/@context"/>
         <xsl:variable name="contextStart" select="
-            if($extContext) 
-            then concat($rootContext, if(starts-with($ctx, '/')) 
-            then $ctx 
-            else concat('/', $ctx), '/(') 
+            if($extContext)
+            then concat($rootContext, if(starts-with($ctx, '/'))
+            then $ctx
+            else concat('/', $ctx), '/(')
             else concat($rootContext, '/(')"/>
-        
+
         <xsl:for-each select="$node/sch:let">
             <!-- &#10; is the new line character -->
             <xsl:choose>
@@ -194,7 +194,7 @@
                                             <testAssertions>
                                                 <xsl:for-each select="sch:assert">
                                                     <xsl:variable name="testAssertionEid" select="uuid:randomUUID(.)"/>
-                                                    <xsl:variable name="errorTR" select="concat('TR.schtron.', 
+                                                    <xsl:variable name="errorTR" select="concat('TR.schtron.',
                                                         translate($etsLabel,' ','.'), '.err.', $testModulePos, '.', $testCasePos, '.', position())"/>
                                                     <TestAssertion id="EID{$testAssertionEid}">
                                                         <label><xsl:value-of select="if(@fpi) then @fpi else if(@id) then @id else concat('Assertion ', position())"/></label>
@@ -205,7 +205,7 @@
                                                         </xsl:if>
                                                         <parent ref="{$testStepEid}"/>
                                                         <expectedResult>NOT_APPLICABLE</expectedResult>
-                                                        
+
                                                         <xsl:variable name="errorTokens">
                                                             <xsl:for-each select="sch:value-of">
                                                                 <xsl:value-of select="if (position() = 1) then ', ' else ''"/>
@@ -213,11 +213,11 @@
                                                                 <xsl:value-of select="if (position() != last()) then ', ' else ''"/>
                                                             </xsl:for-each>
                                                         </xsl:variable>
-                                                        
-                                                        <expression>                                                            
-                                                            
+
+                                                        <expression>
+
                                                             let $filesWithErrors := for $i in $db<xsl:value-of select="$schContext"/>
-                                                            
+
                                                             <xsl:value-of select="$ruleLevelVars"/>
                                                             where local:not-seq($i/<xsl:value-of select="ii:translateFcts(@test)"/>)
                                                             return $i
