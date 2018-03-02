@@ -58,7 +58,7 @@
     <author>Geonovum</author>
     <creationDate>2018-01-19T16:06:53.937+02:00</creationDate>
     <lastEditor>Geonovum</lastEditor>
-    <lastUpdateDate>2018-01-19T16:06:53.937+02:00</lastUpdateDate>
+    <lastUpdateDate><xsl:value-of select="current-dateTime()"/></lastUpdateDate>
     <tags>
         <tag ref="{$tagId}"/>
     </tags>
